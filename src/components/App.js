@@ -4,24 +4,18 @@ import Word from "./Word";
 
 class App extends Component {
   state = {
-    words: [
-      {
-        id: 1,
-        en: "cat",
-        pl: "kot",
-      },
-      {
-        id: 2,
-        en: "dog",
-        pl: "pies",
-      },
-      {
-        id: 3,
-        en: "fish",
-        pl: "ryba",
-      },
-    ],
+    words: [],
   };
+
+  componentDidMount() {
+    fetch("data/words.json")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          words: data.words,
+        });
+      });
+  }
 
   render() {
     const words = this.state.words.map((word) => (
