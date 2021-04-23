@@ -24,7 +24,9 @@ class App extends Component {
   };
 
   render() {
-    const words = this.state.words.map((word) => <Word key={word.id} />);
+    const words = this.state.words.map((word) => (
+      <Word key={word.id} english={word.en} polish={word.pl} />
+    ));
 
     return <ul>{words}</ul>;
   }
